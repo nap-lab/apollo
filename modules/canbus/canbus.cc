@@ -59,6 +59,11 @@ Status Canbus::Init() {
   }
   AINFO << "Can client is successfully created.";
 
+  secondary_can_client_ = can_factory->CreateCANClient(canbus_conf_.secondary_can_card_parameter());
+  if (secondary_can_client_) {
+    AINFO << "Secondary can client is successfully created.";
+  }
+
   VehicleFactory vehicle_factory;
   vehicle_factory.RegisterVehicleFactory();
   auto vehicle_object =
@@ -78,6 +83,14 @@ Status Canbus::Init() {
     return OnError("Failed to init can receiver.");
   }
   AINFO << "The can receiver is successfully initialized.";
+
+  if (secondary_can_client_) {
+    if (secondary_can_receiver_.Init(secondary_can_client_.get(), message_manager_.get(),
+                                     canbus_conf_.enable_receiver_log()) != ErrorCode::OK) {
+      AINFO << "Failed to init secondary can receiver.";
+    }
+    AINFO << "The secondary can receiver is successfully initialized.";
+  }
 
   if (can_sender_.Init(can_client_.get(), canbus_conf_.enable_sender_log()) !=
       ErrorCode::OK) {
@@ -116,12 +129,25 @@ Status Canbus::Start() {
   }
   AINFO << "Can client is started.";
 
+  if(secondary_can_client_) {
+    if (secondary_can_client_->Start() != ErrorCode::OK) {
+      AINFO << "Failed to start secondary can client";
+    }
+    AINFO << "Secondary can client is started.";
+  }
+
   // 2. start receive first then send
   if (can_receiver_.Start() != ErrorCode::OK) {
     return OnError("Failed to start can receiver.");
   }
   AINFO << "Can receiver is started.";
 
+  if(secondary_can_client_) {
+    if (secondary_can_receiver_.Start() != ErrorCode::OK) {
+      return OnError("Failed to start secondary can receiver.");
+    }
+    AINFO << "Secondary can receiver is started.";
+  }
   // 3. start send
   if (can_sender_.Start() != ErrorCode::OK) {
     return OnError("Failed to start can sender.");
@@ -173,6 +199,9 @@ void Canbus::Stop() {
   can_sender_.Stop();
   can_receiver_.Stop();
   can_client_->Stop();
+  if(secondary_can_client_) {
+    secondary_can_client_->Stop();
+  }
   vehicle_controller_->Stop();
 }
 
