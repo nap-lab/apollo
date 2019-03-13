@@ -161,6 +161,14 @@ class CanSender {
                   bool init_one = false);
 
   /**
+   * @brief Publish a CAN message once with its ID, protocol data.
+   * @param message_id The message ID.
+   * @param protocol_data A pointer of ProtocolData
+   *        which contains the content to send.
+   */
+  apollo::common::ErrorCode SendMessageOnce(uint32_t message_id, ProtocolData<SensorType>* protocol_data);
+
+  /**
    * @brief Start the CAN sender.
    * @return The error code indicating the status of this action.
    */
@@ -350,6 +358,33 @@ void CanSender<SensorType>::AddMessage(uint32_t message_id,
   send_messages_.emplace_back(
       SenderMessage<SensorType>(message_id, protocol_data, init_with_one));
   AINFO << "Add send message:" << std::hex << message_id;
+}
+
+template <typename SensorType>
+common::ErrorCode CanSender<SensorType>::SendMessageOnce(uint32_t message_id,
+                                                         ProtocolData<SensorType>* protocol_data) {
+  if (protocol_data == nullptr) {
+    AERROR << "invalid protocol data.";
+    return common::ErrorCode::CANBUS_ERROR;
+  }
+
+  CanFrame can_frame;
+  can_frame.id = message_id;
+  can_frame.len = protocol_data->GetLength();
+  protocol_data->UpdateData(can_frame.data);
+
+  std::vector<CanFrame> can_frames;
+  can_frames.push_back(can_frame);
+  if (can_client_->SendSingleFrame(can_frames) != common::ErrorCode::OK) {
+    AERROR << "Send msg failed:" << can_frame.CanFrameString();
+    return common::ErrorCode::CANBUS_ERROR;
+  }
+
+  if (enable_log()) {
+    ADEBUG << "send_can_frame#" << can_frame.CanFrameString();
+  }
+
+  return common::ErrorCode::OK;
 }
 
 template <typename SensorType>
