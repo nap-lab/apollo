@@ -1,13 +1,19 @@
 vehicle_parameter {
-  brand: LINCOLN_MKZ
+  brand: KIA_NIRO
   max_enable_fail_attempt: 5
   driving_mode: COMPLETE_AUTO_DRIVE
 }
 
 can_card_parameter {
-  brand: ESD_CAN
-  type: PCI_CARD
+  brand: SOCKET_CAN_RAW
+  type: USB_CARD
   channel_id: CHANNEL_ID_ZERO
+}
+
+secondary_can_card_parameter {
+  brand: SOCKET_CAN_RAW
+  type: USB_CARD
+  channel_id: CHANNEL_ID_ONE
 }
 
 enable_debug_mode: false
