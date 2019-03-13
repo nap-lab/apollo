@@ -9,11 +9,11 @@ data {
 rtk_from {
     format: RTCM_V3
     ntrip {
-        #address: "111.111.111.11"
-        #port: 0000
-        #mount_point: "yourport"
-        #user: "username"
-        #password: "password"
+        address: "193.190.230.76"
+        port: 2101
+        mount_point: "TRDS00NOR0"
+        user: "<username>"
+        password: "<password>"
         timeout_s: 5
     }
     push_location: true
@@ -36,8 +36,8 @@ command {
 }
 
 rtk_solution_type: RTK_RECEIVER_SOLUTION
-imu_type: ADIS16488
-proj4_text: "+proj=utm +zone=10 +ellps=WGS84 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs"
+imu_type: G320N
+proj4_text: "+proj=utm +zone=32 +ellps=WGS84 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs"
 
 tf {
     frame_id: "world"
