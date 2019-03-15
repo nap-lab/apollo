@@ -446,6 +446,29 @@ function build_velodyne() {
   rm -rf modules/devel_isolated/
 }
 
+function build_pandora() {
+  CURRENT_PATH=$(pwd)
+  if [ -d "${ROS_ROOT}" ]; then
+    ROS_PATH="${ROS_ROOT}/../.."
+  else
+    warning "ROS not found. Run apolllo.sh build first."
+    exit 1
+  fi
+
+  source "${ROS_PATH}/setup.bash"
+
+  cd modules
+  catkin_make_isolated --install --source drivers/pandora \
+    --install-space "${ROS_PATH}" -DCMAKE_BUILD_TYPE=Release \
+    --cmake-args --no-warn-unused-cli
+  find "${ROS_PATH}" -name "*.pyc" -print0 | xargs -0 rm -rf
+  cd -
+
+  rm -rf modules/.catkin_workspace
+  rm -rf modules/build_isolated/
+  rm -rf modules/devel_isolated/
+}
+
 
 function build_lslidar() {
   CURRENT_PATH=$(pwd)
@@ -626,6 +649,9 @@ function main() {
       ;;
     build_velodyne)
       build_velodyne
+      ;;
+    build_pandora)
+      build_pandora
       ;;
     build_lslidar)
       build_lslidar
