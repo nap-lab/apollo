@@ -5,7 +5,7 @@
 	<arg name="start_angle"  default="135"/>
 	<arg name="pandora_camera_port"  default="9870"/>
 	<arg name="enable_camera"  default="true"/>
-	<arg name="timezone"  default="8"/>
+	<arg name="timezone"  default="1"/>
 	<arg name="frame_id"  default="velodyne64"/>
 	<arg name="lidar_topic"  default="/apollo/sensor/velodyne64/PointCloud2"/>
 	<arg name="camera0_topic"  default="/apollo/sensor/camera/traffic/image_long"/>
