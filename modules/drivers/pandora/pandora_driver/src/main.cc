@@ -146,8 +146,8 @@ class PandoraHesaiClient {
                       int pic_id, bool distortion) {
     sensor_msgs::ImagePtr imgMsg;
 
-    if (pic_id > 4 || pic_id < 0) {
-      ROS_INFO("picid wrong in getImageToPub");
+    if (pic_id > 1 || pic_id < 0) {
+      //ROS_INFO("picid wrong in getImageToPub");
       return;
     }
     imgMsg = cv_bridge::CvImage(std_msgs::Header(), "rgb8", *matp).toImageMsg();

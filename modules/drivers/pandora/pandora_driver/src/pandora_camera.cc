@@ -158,9 +158,6 @@ void PandoraCamera::processPic(int pic_id) {
         //        mapy_[pic->header.pic_id], CV_INTER_LINEAR);
         //break;
       case 1:
-      case 2:
-      case 3:
-      case 4:
         uint8_t *bmp;
         uint32_t bmpSize;
         decompressJpeg(static_cast<uint8_t *>(pic->yuv), pic->header.len, &bmp,
@@ -175,6 +172,9 @@ void PandoraCamera::processPic(int pic_id) {
         bmp = NULL;
         break;
 
+      case 2:
+      case 3:
+      case 4:
       default:
         free(pic->yuv);
         pic->yuv = NULL;
