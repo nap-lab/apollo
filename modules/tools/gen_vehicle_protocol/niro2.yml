@@ -1,0 +1,37 @@
+car_type: niro2
+protocols:
+  '220':
+    id: '220'
+    name: brake_pressure_220
+    protocol_type: report
+    sender: VEHICLE
+    vars:
+    - {bit: 24, is_signed_var: false, len: 12, name: BRAKE_PRESSURE, offset: 0.0,
+      order: intel, physical_range: '[0|0]', physical_unit: bar, precision: 0.033,
+      type: double}
+  2b0:
+    id: 2b0
+    name: steering_angle_2b0
+    protocol_type: report
+    sender: VEHICLE
+    vars:
+    - {bit: 0, is_signed_var: true, len: 16, name: STEERING_WHEEL_ANGLE, offset: 0.0,
+      order: intel, physical_range: '[0|0]', physical_unit: degrees, precision: 0.018,
+      type: double}
+  '371':
+    id: '371'
+    name: throttle_pressure_371
+    protocol_type: report
+    sender: VEHICLE
+    vars:
+    - {bit: 56, is_signed_var: false, len: 8, name: THROTTLE_PRESSURE, offset: 0.0,
+      order: intel, physical_range: '[0|0]', physical_unit: bar, precision: 0.393,
+      type: double}
+  52a:
+    id: 52a
+    name: speed_52a
+    protocol_type: report
+    sender: VEHICLE
+    vars:
+    - {bit: 0, is_signed_var: false, len: 8, name: SPEED, offset: 0.0, order: intel,
+      physical_range: '[0|0]', physical_unit: mps, precision: 0.3, type: double}

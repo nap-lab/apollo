@@ -1,0 +1,8 @@
+dbc_file: niro.dbc
+protocol_conf: niro.yml
+car_type: niro
+sender_list: [72, 71, 70, c8, b8, 81, 80, 82, 92, 91, 90]
+sender: MAB
+black_list: []
+
+output_dir: output/

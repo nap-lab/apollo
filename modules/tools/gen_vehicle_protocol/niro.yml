@@ -1,0 +1,507 @@
+car_type: niro
+protocols:
+  '70':
+    id: '70'
+    name: brake_enable_70
+    protocol_type: control
+    sender: BRAKE
+    vars:
+    - bit: 0
+      enum: {1372: BRAKE_ENABLE_MAGIC_DEFAULT_MAGIC_NUMBER}
+      is_signed_var: false
+      len: 16
+      name: brake_enable_magic
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: enum
+  '71':
+    id: '71'
+    name: brake_disable_71
+    protocol_type: control
+    sender: BRAKE
+    vars:
+    - bit: 0
+      enum: {1372: BRAKE_DISABLE_MAGIC_DEFAULT_MAGIC_NUMBER}
+      is_signed_var: false
+      len: 16
+      name: brake_disable_magic
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: enum
+  '72':
+    id: '72'
+    name: brake_command_72
+    protocol_type: control
+    sender: BRAKE
+    vars:
+    - bit: 0
+      enum: {1372: BRAKE_COMMAND_MAGIC_DEFAULT_MAGIC_NUMBER}
+      is_signed_var: false
+      len: 16
+      name: brake_command_magic
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: enum
+    - {bit: 16, is_signed_var: true, len: 32, name: brake_pedal_command, offset: 0.0,
+      order: intel, physical_range: '[0|1]', physical_unit: '', precision: 1.0, type: int}
+  '73':
+    id: '73'
+    name: brake_report_73
+    protocol_type: report
+    sender: BRAKE
+    vars:
+    - bit: 0
+      enum: {1372: BRAKE_REPORT_MAGIC_DEFAULT_MAGIC_NUMBER}
+      is_signed_var: false
+      len: 16
+      name: brake_report_magic
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: enum
+    - {bit: 16, is_signed_var: false, len: 8, name: brake_report_enabled, offset: 0.0,
+      order: intel, physical_range: '[0|0]', physical_unit: '', precision: 1.0, type: int}
+    - {bit: 24, is_signed_var: false, len: 8, name: brake_operator_override, offset: 0.0,
+      order: intel, physical_range: '[0|0]', physical_unit: '', precision: 1.0, type: int}
+    - bit: 32
+      enum: {0: BRAKE_DTCS_NO_COMMUNICATION_WITH_BRAKE_SENSOR, 1: BRAKE_DTCS_OPERATOR_OVERRIDE_BRAKE}
+      is_signed_var: false
+      len: 8
+      name: brake_dtcs
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: enum
+  '80':
+    id: '80'
+    name: steering_enable_80
+    protocol_type: control
+    sender: STEERING
+    vars:
+    - bit: 0
+      enum: {1372: STEERING_ENABLE_MAGIC_DEFAULT_MAGIC_NUMBER}
+      is_signed_var: false
+      len: 16
+      name: steering_enable_magic
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: enum
+  '81':
+    id: '81'
+    name: steering_disable_81
+    protocol_type: control
+    sender: STEERING
+    vars:
+    - bit: 0
+      enum: {1372: STEERING_DISABLE_MAGIC_DEFAULT_MAGIC_NUMBER}
+      is_signed_var: false
+      len: 16
+      name: steering_disable_magic
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: enum
+  '82':
+    id: '82'
+    name: steering_torque_command_82
+    protocol_type: control
+    sender: STEERING
+    vars:
+    - bit: 0
+      enum: {1372: STEERING_COMMAND_MAGIC_DEFAULT_MAGIC_NUMBER}
+      is_signed_var: false
+      len: 16
+      name: steering_command_magic
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: enum
+    - {bit: 16, is_signed_var: true, len: 32, name: steering_torque_command, offset: 0.0,
+      order: intel, physical_range: '[-1|1]', physical_unit: '', precision: 1.0, type: int}
+  '83':
+    id: '83'
+    name: steering_report_83
+    protocol_type: report
+    sender: STEERING
+    vars:
+    - bit: 0
+      enum: {1372: STEERING_REPORT_MAGIC_DEFAULT_MAGIC_NUMBER}
+      is_signed_var: false
+      len: 16
+      name: steering_report_magic
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: enum
+    - {bit: 16, is_signed_var: false, len: 8, name: steering_report_enabled, offset: 0.0,
+      order: intel, physical_range: '[0|0]', physical_unit: '', precision: 1.0, type: int}
+    - {bit: 24, is_signed_var: false, len: 8, name: steering_operator_override, offset: 0.0,
+      order: intel, physical_range: '[0|0]', physical_unit: '', precision: 1.0, type: int}
+    - bit: 32
+      enum: {0: STEERING_DTCS_NO_COMMUNICATION_WITH_STEERING_SENSOR, 1: STEERING_DTCS_OPERATOR_OVERRIDE_STEERING}
+      is_signed_var: false
+      len: 8
+      name: steering_dtcs
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: enum
+  '90':
+    id: '90'
+    name: throttle_enable_90
+    protocol_type: control
+    sender: THROTTLE
+    vars:
+    - bit: 0
+      enum: {1372: THROTTLE_ENABLE_MAGIC_DEFAULT_MAGIC_NUMBER}
+      is_signed_var: false
+      len: 16
+      name: throttle_enable_magic
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: enum
+  '91':
+    id: '91'
+    name: throttle_disable_91
+    protocol_type: control
+    sender: THROTTLE
+    vars:
+    - bit: 0
+      enum: {1372: THROTTLE_DISABLE_MAGIC_DEFAULT_MAGIC_NUMBER}
+      is_signed_var: false
+      len: 16
+      name: throttle_disable_magic
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: enum
+  '92':
+    id: '92'
+    name: throttle_command_92
+    protocol_type: control
+    sender: THROTTLE
+    vars:
+    - bit: 0
+      enum: {1372: THROTTLE_COMMAND_MAGIC_DEFAULT_MAGIC_NUMBER}
+      is_signed_var: false
+      len: 16
+      name: throttle_command_magic
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: enum
+    - {bit: 16, is_signed_var: true, len: 32, name: throttle_pedal_command, offset: 0.0,
+      order: intel, physical_range: '[0|1]', physical_unit: '', precision: 1.0, type: int}
+  '93':
+    id: '93'
+    name: throttle_report_93
+    protocol_type: report
+    sender: THROTTLE
+    vars:
+    - bit: 0
+      enum: {1372: THROTTLE_REPORT_MAGIC_DEFAULT_MAGIC_NUMBER}
+      is_signed_var: false
+      len: 16
+      name: throttle_report_magic
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: enum
+    - {bit: 16, is_signed_var: false, len: 8, name: throttle_report_enabled, offset: 0.0,
+      order: intel, physical_range: '[0|0]', physical_unit: '', precision: 1.0, type: int}
+    - {bit: 24, is_signed_var: false, len: 8, name: throttle_operator_override, offset: 0.0,
+      order: intel, physical_range: '[0|0]', physical_unit: '', precision: 1.0, type: int}
+    - bit: 32
+      enum: {0: THROTTLE_DTCS_NO_COMMUNICATION_WITH_THROTTLE_SENSOR, 1: THROTTLE_DTCS_OPERATOR_OVERRIDE_THROTTLE}
+      is_signed_var: false
+      len: 8
+      name: throttle_dtcs
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: enum
+  af:
+    id: af
+    name: fault_report_af
+    protocol_type: report
+    sender: FAULT
+    vars:
+    - bit: 0
+      enum: {1372: FAULT_REPORT_MAGIC_DEFAULT_MAGIC_NUMBER}
+      is_signed_var: false
+      len: 16
+      name: fault_report_magic
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: enum
+    - {bit: 16, is_signed_var: false, len: 32, name: fault_origin_id, offset: 0.0,
+      order: intel, physical_range: '[0|0]', physical_unit: '', precision: 1.0, type: int}
+    - bit: 48
+      enum: {0: FAULT_DTCS_NO_COMMUNICATION_WITH_SENSOR, 1: FAULT_DTCS_OPERATOR_OVERRIDE}
+      is_signed_var: false
+      len: 8
+      name: fault_dtcs
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: enum
+  b8:
+    id: b8
+    name: steering_angle_command_b8
+    protocol_type: control
+    sender: STEERING_CTRL
+    vars:
+    - bit: 0
+      enum: {0: STEERING_ANGLE_CMD_FLAGS_DISABLE, 1: STEERING_ANGLE_CMD_FLAGS_ENABLE}
+      is_signed_var: false
+      len: 8
+      name: steering_angle_cmd_flags
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: enum
+    - {bit: 8, is_signed_var: true, len: 16, name: steering_angle_cmd_angle, offset: 0.0,
+      order: intel, physical_range: '[0|0]', physical_unit: '', precision: 0.1, type: double}
+    - {bit: 24, is_signed_var: true, len: 16, name: steering_angle_cmd_max_velocity,
+      offset: 0.0, order: intel, physical_range: '[0|0]', physical_unit: '', precision: 0.1,
+      type: double}
+  b9:
+    id: b9
+    name: steering_angle_report_b9
+    protocol_type: report
+    sender: STEERING_CTRL
+    vars:
+    - bit: 0
+      enum: {0: STEERING_ANGLE_REPORT_FLAGS_ENABLE}
+      is_signed_var: false
+      len: 8
+      name: steering_angle_report_flags
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: enum
+    - bit: 8
+      enum: {0: STEERING_ANGLE_REPORT_ERRORS_NONE, 1: STEERING_ANGLE_REPORT_ERRORS_ANGLE_MISSING,
+        2: STEERING_ANGLE_REPORT_ERRORS_ANGLE_IRRATIONAL, 4: STEERING_ANGLE_REPORT_ERRORS_MODULE_DISABLED,
+        6: STEERING_ANGLE_REPORT_ERRORS_COMMAND_REJECTED}
+      is_signed_var: false
+      len: 8
+      name: steering_angle_report_errors
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: enum
+  c8:
+    id: c8
+    name: chassis_control_command_c8
+    protocol_type: control
+    sender: DIAGNOSTICS
+    vars:
+    - bit: 0
+      enum: {0: FRONT_WIPERS_DO_NOTHING, 1: FRONT_WIPERS_DISABLE, 2: FRONT_WIPERS_INTERMITTENT,
+        3: FRONT_WIPERS_SLOW, 4: FRONT_WIPERS_FAST}
+      is_signed_var: false
+      len: 8
+      name: front_wipers
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: enum
+    - bit: 8
+      enum: {0: REAR_WIPER_DO_NOTHING, 1: REAR_WIPER_DISABLE, 2: REAR_WIPER_ENABLE}
+      is_signed_var: false
+      len: 8
+      name: rear_wiper
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: enum
+    - bit: 16
+      enum: {0: RIGHT_SIGNAL_DO_NOTHING, 1: RIGHT_SIGNAL_DISABLE, 2: RIGHT_SIGNAL_ENABLE}
+      is_signed_var: false
+      len: 8
+      name: right_signal
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: enum
+    - bit: 24
+      enum: {0: LEFT_SIGNAL_DO_NOTHING, 1: LEFT_SIGNAL_DISABLE, 2: LEFT_SIGNAL_ENABLE}
+      is_signed_var: false
+      len: 8
+      name: left_signal
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: enum
+    - bit: 32
+      enum: {0: HORN_DO_NOTHING, 2: HORN_ENABLED}
+      is_signed_var: false
+      len: 8
+      name: horn
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: enum
+    - bit: 40
+      enum: {0: VIN_DO_NOTHING, 2: VIN_REQUESTED}
+      is_signed_var: false
+      len: 8
+      name: vin
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: enum
+    - bit: 48
+      enum: {0: HEADLAMPS_DO_NOTHING, 1: HEADLAMPS_DISABLE, 2: HEADLAMPS_LOW, 3: HEADLAMPS_HIGH}
+      is_signed_var: false
+      len: 8
+      name: headlamps
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: enum
+  d8:
+    id: d8
+    name: chassis_control_report_d8
+    protocol_type: report
+    sender: DIAGNOSTICS
+    vars:
+    - bit: 0
+      enum: {0: FRONT_WIPERS_DISABLED, 1: FRONT_WIPERS_INTERMITTENT, 2: FRONT_WIPERS_SLOW,
+        3: FRONT_WIPERS_FAST}
+      is_signed_var: false
+      len: 8
+      name: front_wipers
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: enum
+    - bit: 8
+      enum: {0: REAR_WIPER_DISABLED, 1: REAR_WIPER_ENABLED}
+      is_signed_var: false
+      len: 8
+      name: rear_wiper
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: enum
+    - bit: 16
+      enum: {0: RIGHT_SIGNAL_DISABLED, 1: RIGHT_SIGNAL_ENABLED}
+      is_signed_var: false
+      len: 8
+      name: right_signal
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: enum
+    - bit: 24
+      enum: {0: LEFT_SIGNAL_DISABLED, 1: LEFT_SIGNAL_ENABLED}
+      is_signed_var: false
+      len: 8
+      name: left_signal
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: enum
+    - bit: 32
+      enum: {0: HORN_DISABLED, 1: HORN_ENABLED}
+      is_signed_var: false
+      len: 8
+      name: horn
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: enum
+    - bit: 40
+      enum: {0: VIN_REQUEST_DISABLED, 1: VIN_REQUEST_ENABLED}
+      is_signed_var: false
+      len: 8
+      name: vin_request
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: enum
+    - bit: 48
+      enum: {0: HEADLAMPS_DISABLED, 1: HEADLAMPS_LOW, 2: HEADLAMPS_HIGH}
+      is_signed_var: false
+      len: 8
+      name: headlamps
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: enum

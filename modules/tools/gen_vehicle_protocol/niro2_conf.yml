@@ -1,0 +1,9 @@
+dbc_file: niro2.dbc
+protocol_conf: niro2.yml
+car_type: niro2
+sender_list: []
+sender: MAB
+black_list: []
+
+output_dir: output/
+
