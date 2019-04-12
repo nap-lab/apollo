@@ -38,17 +38,18 @@ void ImageHandler::OnImage(const sensor_msgs::Image &image) {
     return;
   }
 
-  if (image.encoding != "yuyv") {
-    AERROR_EVERY(100) << "Image format not support: " << image.encoding;
-    return;
-  }
-
-  unsigned char *yuv = (unsigned char *)&(image.data[0]);
   auto mat = cv::Mat(image.height, image.width, CV_8UC3);
-  apollo::perception::traffic_light::Yuyv2rgb(yuv, mat.data,
-                                              image.height * image.width);
 
-  cv::cvtColor(mat, mat, CV_RGB2BGR);
+  if (image.encoding == "yuyv") {
+    unsigned char *yuv = (unsigned char *)&(image.data[0]);
+    apollo::perception::traffic_light::Yuyv2rgb(yuv, mat.data,
+                                                image.height * image.width);
+    cv::cvtColor(mat, mat, CV_RGB2BGR);
+  } else {
+    cv_bridge::CvImagePtr cv_ptr =
+        cv_bridge::toCvCopy(image, sensor_msgs::image_encodings::BGR8);
+    mat = cv_ptr->image;
+  }
 
   cv::resize(mat, mat, cv::Size(image.width * ImageHandler::kImageScale,
                                 image.height * ImageHandler::kImageScale),
