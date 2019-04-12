@@ -30,14 +30,14 @@ echo "ulimit -c unlimited" >> /home/${DOCKER_USER}/.bashrc
 chown -R ${DOCKER_USER}:${DOCKER_GRP} "/home/${DOCKER_USER}"
 
 # setup GPS device
-if [ -e /dev/novatel0 ]; then
-  chmod a+rw /dev/novatel0
+if [ -e /dev/ttyUSB0 ]; then
+  chmod a+rw /dev/ttyUSB0
 fi
-if [ -e /dev/novatel1 ]; then
-  chmod a+rw /dev/novatel1
+if [ -e /dev/ttyUSB1 ]; then
+  chmod a+rw /dev/ttyUSB1
 fi
-if [ -e /dev/novatel2 ]; then
-  chmod a+rw /dev/novatel2
+if [ -e /dev/ttyUSB2 ]; then
+  chmod a+rw /dev/ttyUSB2
 fi
 
 # setup camera device
