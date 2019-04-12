@@ -1,0 +1,6 @@
+name : "NIRO"
+brand : KIA
+model : NIRO
+license {
+    vin : "<VIN>"
+}
