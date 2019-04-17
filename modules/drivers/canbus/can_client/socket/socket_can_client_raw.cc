@@ -21,6 +21,7 @@
  **/
 
 #include "modules/drivers/canbus/can_client/socket/socket_can_client_raw.h"
+#include <errno.h>
 
 namespace apollo {
 namespace drivers {
@@ -155,7 +156,7 @@ ErrorCode SocketCanClientRaw::Send(const std::vector<CanFrame> &frames,
     // Synchronous transmission of CAN messages
     int ret = write(dev_handler_, &send_frames_[i], sizeof(send_frames_[i]));
     if (ret <= 0) {
-      AERROR << "send message failed, error code: " << ret;
+      AERROR << "send message failed, error code: " << ret << " errno=" << errno;
       return ErrorCode::CAN_CLIENT_ERROR_BASE;
     }
   }
