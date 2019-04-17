@@ -474,11 +474,11 @@ void Pandar40P_Internal::CalcPointXYZIT(Pandar40PPacket *pkt, int blockid,
     point.x = static_cast<float>(
         xyDistance *
         sinf(degreeToRadian(horizatal_azimuth_offset_map_[i] +
-                            (static_cast<double>(block->azimuth)) / 100.0)));
+                            (static_cast<double>(block->azimuth)) / 100.0 - 85.529)));
     point.y = static_cast<float>(
         xyDistance *
         cosf(degreeToRadian(horizatal_azimuth_offset_map_[i] +
-                            (static_cast<double>(block->azimuth)) / 100.0)));
+                            (static_cast<double>(block->azimuth)) / 100.0 - 85.529)));
     point.z = static_cast<float>(unit.distance *
                                  sinf(degreeToRadian(elev_angle_map_[i])));
 
