@@ -100,7 +100,7 @@ bool SafetyManager::ShouldTriggerSafeMode(const double current_time) {
         status->summary() == Summary::FATAL) {
       log.ERROR(StrCat(
           "Hardware ", hardware, " triggers safety mode: ", status->msg()));
-      return true;
+//      return true;
     }
   }
 
