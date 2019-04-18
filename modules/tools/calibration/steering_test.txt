@@ -1,0 +1,15 @@
+a: gear_location = chassis_pb2.Chassis.GEAR_DRIVE
+a: steering_target = 0.0
+t: 3.0 
+a: steering_target = 10.0
+t: 3.0
+a: steering_target = 20.0
+t: 3.0
+a: steering_target = 30.0
+t: 3.0
+a: steering_target = 40.0
+t: 3.0
+a: steering_target = 50.0
+t: 3.0
+a: steering_target = 0.0
+t: 10.0
