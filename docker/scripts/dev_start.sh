@@ -287,6 +287,8 @@ function main(){
 
     if [ "${USER}" != "root" ]; then
         docker exec apollo_dev bash -c '/apollo/scripts/docker_adduser.sh'
+        docker exec apollo_dev sudo -H -u ${USER} /apollo/apollo.sh build_pandora
+        docker exec apollo_dev sudo -H -u ${USER} /apollo/scripts/bootstrap.sh
     fi
 
     ok "Finished setting up Apollo docker environment. Now you can enter with: \nbash docker/scripts/dev_into.sh"
