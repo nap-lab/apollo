@@ -38,7 +38,7 @@ function start() {
 
   NUM_PROCESSES="$(pgrep -c -f "record_play/rtk_recorderpy")"
   if [ "${NUM_PROCESSES}" -eq 0 ]; then
-    python modules/tools/record_play/rtk_recorder.py
+    python modules/tools/record_play/rtk_recorder.py &
   fi
 }
 

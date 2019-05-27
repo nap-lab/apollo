@@ -36,7 +36,7 @@ function start() {
     pkill -SIGKILL -f rtk_player.py
   fi
 
-  python modules/tools/record_play/rtk_player.py
+  python modules/tools/record_play/rtk_player.py &
 }
 
 function stop() {
